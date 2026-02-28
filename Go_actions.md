@@ -2,7 +2,7 @@
 Теги: GitVerse, CI/CD, Go, GitHub Actions, DevOps, Golang
 ![Gopher в GitVerse](gopher_space.jpeg)
 
-В этой статье будет написано руководство по созданию простого action, написанного на Go, на платформе GitVerse.
+В этой статье будет написано руководство по созданию простого action, написанного на Go на платформе GitVerse.
 
 ### GitHub Actions
 GitHub Actions — это встроенная в GitHub система автоматизации (CI/CD), которая позволяет запускать различные задачи прямо из репозитория. Многие из вас пользуются Github actions и у многих есть представление, что это такое. Для остальных: Github предоставляет полную документацию по Github Actions. Вы можете с ней ознакомиться по [ссылке](https://docs.github.com/en/actions/tutorials). <br>
@@ -32,10 +32,9 @@ GitVerse Actions — это встроенная система CI/CD, пред�
 
 
 ### Создание простого Actions на Go на платформе GitVerse
-**Шаг 1.** Давайте создадим actions, который просто будет писать нам HELLO WORLD!
+**Шаг 1.** Давайте создадим actions, который просто будет писать нам 'Hello World'! <br>
 Для начала создадим репозиторий на платформе gitverse.ru. <br>
 **Шаг 2.** Пишем свой первый actions.yaml. Чтобы было более понятно, почитайте [туториал от Github](https://docs.github.com/en/actions/reference/workflows-and-actions/metadata-syntax). <br>
-Обратите внимание мы используем: 'go'
 ```yaml
 name: 'GitVerse Go Action'
 description: 'Hello World'
@@ -43,7 +42,7 @@ runs:
   using: 'go'
   main: 'main.go'
 ```
-**Шаг 3.** Далее создаем файл: main.go с простым fmt.Println("Hello world")
+**Шаг 3.** Далее создаем файл: main.go с простым fmt.Printlnl
 ```go 
 package main
 import "fmt"
@@ -70,14 +69,14 @@ jobs:
         id: use-go-action
         uses: https://gitverse.ru/<Ваш username>/<Название репозитория с action>@<Версия>
 ```
-Обратите внимание, что на шаге "Use Go Action" в "uses:", необходимо вставить ссылку на свой Action, который мы написали. Версией может быть тег, название ветки или sha коммита. <br>
-Так же для того, чтобы ваш action запустился необходимо предварительно установить go в окружение, в котором будет запущен наш workflow, для этого мы делаем actions/setup-go@v3. <br>
 Наш Action запустит сборку после того как мы его запушим на платформу, потому что в нашей инструкции есть строка "on: [push]" <br>
-**Шаг 7.**  Cмотрим результат работы нашего Action во вкладке CI/CD.
+Так же для того, чтобы action запустился необходимо предварительно установить go в окружение, в котором будет запущен наш workflow, для этого мы делаем actions/setup-go@v3. <br>
+Обратите внимание, что на шаге "Use Go Action" в "uses:", необходимо вставить ссылку на Action, который мы написали. Версией может быть тег, название ветки или sha коммита. <br>
+**Шаг 7.**  Cмотрим результат работы нашего Action во вкладке CI/CD:
 ![Hello world](CICD_Hello_world.png)
 
 ### Создание Actions на Go на платформе GitVerse с использованием Inputs and Outputs
-Теперь немного усложним задачу. Используем [Inputs](https://docs.github.com/en/actions/reference/workflows-and-actions/metadata-syntax#inputs) и [Outputs](https://docs.github.com/en/actions/reference/workflows-and-actions/metadata-syntax#outputs-for-docker-container-and-javascript-actions).
+Теперь немного усложним задачу: используем [Inputs](https://docs.github.com/en/actions/reference/workflows-and-actions/metadata-syntax#inputs) и [Outputs](https://docs.github.com/en/actions/reference/workflows-and-actions/metadata-syntax#outputs-for-docker-container-and-javascript-actions).
 1. Для использования inputs and outputs, обновим action.yml файл
 ```yaml
 name: 'Simple GitVerse Go Action'
@@ -158,7 +157,7 @@ jobs:
       - name: Print Output
         run: echo 'output time is ${{ steps.use-go-action.outputs.time }}'
 ```
-7. Cмотрим на результат работы нашего Action во вкладке CI/CD.
+7. Cмотрим на результат работы нашего Action во вкладке CI/CD, после того как мы запишим изменения:
 ![Пример input](CICD_input.png) ![Пример output](CICD_output.png)
 
 
