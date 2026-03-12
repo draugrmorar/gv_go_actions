@@ -1,6 +1,6 @@
 ## Go-actions для GitVerse Actions: пошаговое руководство
 Теги: GitVerse, CI/CD, Go, GitHub Actions, DevOps, Golang
-![Gopher в GitVerse](gopher_space.jpeg)
+![Gopher в GitVerse](img/gopher_space.jpeg)
 
 Эта статья — практическое руководство по созданию собственных Go-экшенов для платформы GitVerse. Если вы хотите научиться писать action на Go и переиспользовать их в своих CI/CD-пайплайнах — тогда эта статья для вас.
 
@@ -72,7 +72,7 @@ jobs:
 Так же для того, чтобы action запустился необходимо предварительно установить go в окружение, в котором будет запущен наш workflow, для этого мы делаем actions/setup-go@v3. <br>
 Обратите внимание, что на шаге "Use Go Action" в "uses:", необходимо вставить ссылку на Action, который мы написали. Версией может быть тег, название ветки или sha коммита. <br>
 **Шаг 7.**  Cмотрим результат работы нашего Action во вкладке CI/CD:
-![Hello world](CICD_Hello_world.png)
+![Hello world](img/CICD_Hello_world.png)
 
 ### Создание Actions на Go на платформе GitVerse с использованием Inputs and Outputs
 Теперь немного усложним задачу: используем [Inputs](https://docs.github.com/en/actions/reference/workflows-and-actions/metadata-syntax#inputs) и [Outputs](https://docs.github.com/en/actions/reference/workflows-and-actions/metadata-syntax#outputs-for-docker-container-and-javascript-actions).
@@ -157,7 +157,7 @@ jobs:
         run: echo 'output time is ${{ steps.use-go-action.outputs.time }}'
 ```
 7. Cмотрим на результат работы нашего Action во вкладке CI/CD, после того как мы запишим изменения:
-![Пример input](CICD_input.png) ![Пример output](CICD_output.png)
+![Пример input](img/CICD_input.png) ![Пример output](img/CICD_output.png)
 
 
 ### Подведем итоги:

@@ -1,0 +1,5 @@
+name: 'GitVerse Go Action'
+description: 'Hello World'
+runs:
+  using: 'go'
+  main: 'main.go'
